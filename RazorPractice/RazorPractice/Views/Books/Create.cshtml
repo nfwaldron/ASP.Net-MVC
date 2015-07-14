@@ -1,0 +1,26 @@
+﻿
+
+@model Book
+
+<h2>Create</h2>
+
+@* Create form helpers *@
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m=>m.Title, "Title:")
+        @Html.TextBoxFor(m=>m.Title)
+    </div>
+    <div>
+        @Html.LabelFor(m=> m.Author,"Author:")
+        @Html.TextBoxFor(m=>m.Author)
+    </div>
+    <div>
+        @Html.LabelFor(m=>m.ISBN, "ISBN:")
+        @Html.TextBoxFor(m=>m.ISBN)
+    </div>
+
+    <input type="submit" value="Add Book" />
+}
+
