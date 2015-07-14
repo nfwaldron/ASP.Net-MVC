@@ -1,0 +1,55 @@
+﻿@* Create a list of three products. Each product should have a Name,
+    Price, and OnSale properties. Display the list of products in an HTML table:
+    Any product that is on sale should appear with a light green background.
+    Show the sum of the prices of all of the products at the bottom of the table.
+*@
+
+@* Anything within the @{} is considered at statement, and anything after the @ is an expression.
+    The following code is a representation of how to utilize the @. This code isn't completely DRY
+    However...
+*@
+
+@{
+    var products = new List<Product>()
+      {
+         new Product{Id = "product1", Name = "Milk", Price = 3.59m, OnSale = true},
+         new Product{Id = "product2", Name = "Bread", Price = 2.49m, OnSale = false},
+         new Product{Id = "product3", Name = "Cheese", Price = 4.09m, OnSale = true},
+      };
+    decimal sum = 0;
+}
+
+<table class="table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in products)
+        {
+            sum += item.Price;
+            if (item.OnSale == true)
+            {
+                <tr>
+                    <td style="background-color: yellow">@item.Name</td>
+                    <td style="background-color: yellow">@item.Price</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+
+                </tr>
+            }
+        }
+
+    </tbody>
+
+</table>
+
+<div>@sum</div>

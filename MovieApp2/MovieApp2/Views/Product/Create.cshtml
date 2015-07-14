@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" action="/product/create">
+    <div>
+        <label>
+            Name: <input name= "Name" />
+
+        </label>
+
+    </div>
+    <div>
+        <label>
+            Price: <input name="Price" />
+
+        </label>
+
+    </div>
+    <input type="submit" value="Save" />
+
+
+</form>
+
+<!--
+    PRODUCT
+
+
+// POST: Products/Create
+        [HttpPost]
+        public ActionResult Create(Product product1, Product product2)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+PRODUCT CONTROLLER
+
+ <h2>Create</h2>
+
+<form method="post" action="/products/create">
+
+    <div>
+        <label>
+            Name: <input name="product1.Name" />
+        </label>
+
+    </div>
+
+    <div>
+        <label>
+            Price: <input name="product1.Price" />
+        </label>
+
+    </div>
+
+    <div>
+        <label>
+            Name: <input name="product2.Name" />
+        </label>
+
+    </div>
+
+    <div>
+        <label>
+            Price: <input name="product2.Price" />
+        </label>
+
+    </div>
+
+
+    <input type="submit" value="Save" />
+</form>
+-->
+

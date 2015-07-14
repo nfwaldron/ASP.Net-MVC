@@ -1,0 +1,47 @@
+﻿@*RAZOR COMMENTS Do not show up in HTML.*@
+
+@*  *@
+
+@{
+    var products = new List<Product>
+    {
+        new Product {Name = "Tesla", Price=89000.50m},
+        new Product {Name = "Bread", Price = 3.50m},
+        new Product {Name = "Eggs", Price = 4.55m}
+    };
+}
+
+<table class="table" border="1px">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+
+            <th>Product Price</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<ul>
+    @foreach (var product in products)
+    {
+        <li>
+            @product.Name - @product.Price.ToString("c")
+
+            @if (product.Price < 100.00m)
+            {
+                <text>On Sale!</text>
+            }
+        </li>
+    }
+
+</ul>
