@@ -9,13 +9,13 @@
     However...
 *@
 
+@* States that wherever I use the 
+    @model IndexVM says that whenever you use this.model it is referring to the IndexVM.
+    Every view in MCV gets its own view model, which contains all of the data that view will need.
+ *@
+@model RazorPractice.Views.Home.IndexVM
+
 @{
-    var products = new List<Product>()
-      {
-         new Product{Id = "product1", Name = "Milk", Price = 3.59m, OnSale = true},
-         new Product{Id = "product2", Name = "Bread", Price = 2.49m, OnSale = false},
-         new Product{Id = "product3", Name = "Cheese", Price = 4.09m, OnSale = true},
-      };
     decimal sum = 0;
 }
 
@@ -28,7 +28,7 @@
     </thead>
     <tbody>
 
-        @foreach (var item in products)
+        @foreach (var item in this.Model.Products)
         {
             sum += item.Price;
             if (item.OnSale == true)
