@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<!--
+    Model View Binding for Complex Objects --
+    If you have an object that inherits other objects as a property,
+    you have to enter the name of the 
+
+-->
+
+<h2>Create Customer</h2>
+<form method="post" action="/Customers/Create">
+    <h3>Customer Name</h3>
+
+    First Name:<br /> <input name="FirstName" /><br />
+    Last Name:<br /> <input name="LastName" /><br />
+
+    <h3>Shipping Address</h3>
+
+    Street:<br /> <input name="ShippingAddress.Street" /><br />
+    City:<br /> <input name="ShippingAddress.City" /><br />
+    Zip Code:<br /> <input name="ShippingAddress.ZipCode" /><br />
+
+    <h3>Billing Address</h3>
+
+    Street:<br /> <input name="BillingAddress.Street" /><br />
+    City:<br /> <input name="BillingAddress.City" /><br />
+    Zip Code:<br /> <input name="BillingAddress.ZipCode" /><br />
+    <br /><input type="submit" value="add" />
+
+</form>
+
+
