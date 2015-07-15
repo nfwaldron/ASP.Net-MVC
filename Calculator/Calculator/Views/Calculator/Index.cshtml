@@ -1,0 +1,19 @@
+﻿@model CalculatorForm
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model=>model.Number1,"Number 1")
+        @Html.TextBoxFor(model=>model.Number1)
+    </div>
+    <div>
+        @Html.LabelFor(model=>model.Number2, "Number 2")
+        @Html.TextBoxFor(model=>model.Number2)
+    </div>
+    <div>
+        <input type="submit" value="Add Numbers" />
+    </div>
+    <div>
+        @Html.DisplayTextFor(model=>model.Result)
+    </div>
+}
