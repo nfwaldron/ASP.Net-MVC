@@ -34,6 +34,7 @@ namespace UserRegistration.Models
 
         //Last Name is required
         [Required(ErrorMessage="First name is required")]
+        [MinLength(5, ErrorMessage="Your last name must be more than 5 letters. Sorry.")]
         public string LastName { get; set; }
 
         //Credit card number must be valid
@@ -41,16 +42,22 @@ namespace UserRegistration.Models
         public string CreditCard { get; set; }
 
         // Password required
+        // Use the Datatype attribute in order to ensure that the password shows up as dots
+        [DataType(DataType.Password)]
         [Required(ErrorMessage="Password required")]
         public string Password { get; set; }
 
         // Confirm password required
+        // Use the Datatype attribute in order to ensure that the password shows up as dots
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Confirm password required")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage="SSN required")]
         public string SocialSecurityNumber { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        //[Required(ErrorMessage = "SSN required")]
         public string Comments { get; set; }
     }
 }
