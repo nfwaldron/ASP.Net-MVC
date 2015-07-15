@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+@* Create an HTML form with input fields for two numnbers and a button for adding the two numbers. Display the results of adding the
+    two numbers on the form. Use the strongly typed helpers to create the form. Dont use the @HTML.LabelFor() helper to display the result.
+    Instead use the Html.DisplayTextFor()
+*@
+
+@model CalculatorForm.Models.Calculator 
+           @* Making into strongly typed view by associating it with a view model.*@
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.Number1, "Calculator Number1")
+        @Html.TextBoxFor(m => m.Number1)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Number2, "Calculator Number2")
+        @Html.TextBoxFor(m => m.Number2)
+    </div>
+    <input type="submit" value="Add Numbers" />
+    
+    @Html.DisplayTextFor(m=>m.Result)
+    
+}
+
