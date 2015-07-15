@@ -47,34 +47,14 @@ namespace UserRegistration.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            // Regex pattern for social security numbers
-            var socialPattern = @"^\d{3}-\d{2}-\d{4}$";
-
-            var comments = user.Comments.ToCharArray();
-
-
-            if (user.Password != user.ConfirmPassword)
+            // If the model state is valid, return to index
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("ConfirmPassword", "Passwords to not match!");
-            }
-
-            if (Regex.IsMatch(user.SocialSecurityNumber,socialPattern) == false)
-            {
-                ModelState.AddModelError("SocialSecurityNumber", "Please enter social security number with dashes");
-            }
-
-            if (comments.Length > 50)
-            {
-                
-            }
-
-            else
-            {
-                return View();
-            }
-
-               
-            
+                // Add user to database
+                return RedirectToAction("Index");
+            } 
+            //return the view
+            return View();         
         }
 
         // GET: Users/Edit/5

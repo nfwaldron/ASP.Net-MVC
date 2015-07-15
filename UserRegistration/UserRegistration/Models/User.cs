@@ -33,7 +33,7 @@ namespace UserRegistration.Models
         public string FirstName { get; set; }
 
         //Last Name is required
-        [Required(ErrorMessage="First name is required")]
+        [Required(ErrorMessage="Last name is required")]
         [MinLength(5, ErrorMessage="Your last name must be more than 5 letters. Sorry.")]
         public string LastName { get; set; }
 
@@ -50,14 +50,19 @@ namespace UserRegistration.Models
         // Confirm password required
         // Use the Datatype attribute in order to ensure that the password shows up as dots
         [DataType(DataType.Password)]
+
+        // Compare Password with COnfirmPassword
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
         [Required(ErrorMessage = "Confirm password required")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage="SSN required")]
+        [RegularExpression(@"^\d{3}-\d{2}-\d{4}$", ErrorMessage="Please enter SSN with dashes")]
         public string SocialSecurityNumber { get; set; }
 
         [DataType(DataType.MultilineText)]
-        //[Required(ErrorMessage = "SSN required")]
+        // Make sure that comments cannot exceed 50 characters
+        [MaxLength(50, ErrorMessage = "Comments cannot exceed 50 characters")]
         public string Comments { get; set; }
     }
 }
