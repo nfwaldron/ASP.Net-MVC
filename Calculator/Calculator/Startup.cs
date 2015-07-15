@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Calculator.Startup))]
-namespace Calculator
+[assembly: OwinStartupAttribute(typeof(CalculatorForm.Startup))]
+namespace CalculatorForm
 {
     public partial class Startup
     {

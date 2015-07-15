@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Calculator.Models;
+using CalculatorForm.Models;
 
-namespace Calculator
+namespace CalculatorForm
 {
     public partial class Startup
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Calculator
+namespace CalculatorForm
 {
     public class RouteConfig
     {
