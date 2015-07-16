@@ -2,4 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_FeaturedProducts");
+@Html.Partial("_FeaturedProducts")
+
+<hr />
+
+@Html.Action("GetAd", "BannerAds")
