@@ -7,49 +7,52 @@ using System.Web.Mvc;
 
 namespace Auction.Controllers
 {
-    public class BidsController : Controller
+    public class ItemsController : Controller
     {
         private ItemDataContext _db = new ItemDataContext();
-        
-        // GET: Bids
+
+        // GET: Items
         public ActionResult Index()
         {
-            return View();
+            var items = from i in _db.Item select i; 
+            return View(items.ToList());
         }
 
-        // GET: Bids/Details/5
+        // GET: Items/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Bids/Create
-
-        // Signature.
-        public ActionResult BidOnItem(int id)
+        // GET: Items/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Bids/Create
+        // POST: Items/Create
         [HttpPost]
-        public ActionResult BidOnItem(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
-            //if (ModelState.IsValid)
-            //{
-                
-            //}
+            try
+            {
+                // TODO: Add insert logic here
 
-            return View();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Bids/Edit/5
+        // GET: Items/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Bids/Edit/5
+        // POST: Items/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -65,13 +68,13 @@ namespace Auction.Controllers
             }
         }
 
-        // GET: Bids/Delete/5
+        // GET: Items/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Bids/Delete/5
+        // POST: Items/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

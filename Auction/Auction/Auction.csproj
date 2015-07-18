@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BidsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +177,10 @@
     <Compile Include="Migrations\201507172035253_newMigration2.cs" />
     <Compile Include="Migrations\201507172035253_newMigration2.Designer.cs">
       <DependentUpon>201507172035253_newMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507172136121_newMigration3.cs" />
+    <Compile Include="Migrations\201507172136121_newMigration3.Designer.cs">
+      <DependentUpon>201507172136121_newMigration3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -243,6 +248,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507172035253_newMigration2.resx">
       <DependentUpon>201507172035253_newMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507172136121_newMigration3.resx">
+      <DependentUpon>201507172136121_newMigration3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
