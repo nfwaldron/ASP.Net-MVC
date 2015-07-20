@@ -9,14 +9,20 @@ namespace AlbumApplication.Controllers
 {
     public class AlbumsController : Controller
     {
-        private AlbumDB _db = new AlbumDB();
-        
+        private IRepository _repo;
+
+        public AlbumsController(IRepository repo)
+        {
+            _repo = repo;
+        }
+          
         // GET: Albums
         public ActionResult Index()
         {
 
+            var albums = _repo.ListAlbums();
             //var albums = _db.Albums.ToList();
-            var albums = (from a in _db.Albums select a).ToList();
+            //var albums = (from a in _db.Albums select a).ToList();
             return View(albums);
         }
 
@@ -38,8 +44,7 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Albums.Add(album);
-                _db.SaveChanges();
+                _repo.CreateAlbum(album);
                 return RedirectToAction("Index");
             }
 
@@ -59,7 +64,7 @@ namespace AlbumApplication.Controllers
             // id is now a nullable type. nullable types are class wrappers around the value.
             // in order to access the value of a nullable property, you must access it by
             // propertyName.Value
-            var original = _db.Albums.Find(id.Value);
+            var original = _repo.FindAlbum(id.Value);
 
             if (original == null)
             {
@@ -75,11 +80,7 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var original = _db.Albums.Find(album.Id);
-                original.Title = album.Title;
-                original.Artist = album.Artist;
-                original.Genre = album.Genre;
-                _db.SaveChanges();
+                _repo.Edit(album);
                 return RedirectToAction("Index");
 
             }
@@ -91,7 +92,7 @@ namespace AlbumApplication.Controllers
         // GET: Albums/Delete/5
         public ActionResult Delete(int id)
         {
-            var original = _db.Albums.Find(id);
+            var original = _repo.FindAlbum(id);
             return View(original);
         }
 
@@ -100,10 +101,7 @@ namespace AlbumApplication.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            var original = _db.Albums.Find(id);
-            _db.Albums.Remove(original);
-            _db.SaveChanges();
-
+            _repo.Delete(id);
             return RedirectToAction("Index");
         }
     }

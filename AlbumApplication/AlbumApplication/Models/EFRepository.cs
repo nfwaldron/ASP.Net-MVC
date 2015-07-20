@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AlbumApplication.Models
 {
-    public class Repository
+    public class EFRepository : AlbumApplication.Models.IRepository
     {
         private AlbumDB _db = new AlbumDB();
 
