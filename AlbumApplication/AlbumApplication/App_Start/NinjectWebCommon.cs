@@ -11,6 +11,7 @@ namespace AlbumApplication.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using AlbumApplication.Models;
+    using CoderCamps;
 
     public static class NinjectWebCommon 
     {
@@ -63,7 +64,8 @@ namespace AlbumApplication.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             // Create mapping between irepository and concrete class
-            kernel.Bind<IRepository>().To<EFRepository>();
+            // kernel.Bind<IRepository>().To<EFRepository>();
+            kernel.Bind<IGenericRepository>().To<GenericRepository>(); 
         }        
     }
 }

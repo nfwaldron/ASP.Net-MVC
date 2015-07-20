@@ -52,6 +52,7 @@ namespace AlbumApplication.Controllers
             if (ModelState.IsValid)
             {
                 _repo.Add(album);
+                _repo.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -91,6 +92,7 @@ namespace AlbumApplication.Controllers
                 original.Title = album.Title;
                 original.Artist = album.Artist;
                 original.Genre = album.Genre;
+                _repo.SaveChanges();
                 return RedirectToAction("Index");
 
             }
@@ -112,6 +114,7 @@ namespace AlbumApplication.Controllers
         public ActionResult DeleteReally(int id)
         {
             _repo.Delete<Album>(id);
+            _repo.SaveChanges();
             return RedirectToAction("Index");
         }
     }

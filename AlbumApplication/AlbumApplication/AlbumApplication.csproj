@@ -183,15 +183,20 @@
     <Compile Include="Migrations\201507201645264_newMigration.Designer.cs">
       <DependentUpon>201507201645264_newMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507202042112_newMigration1.cs" />
+    <Compile Include="Migrations\201507202042112_newMigration1.Designer.cs">
+      <DependentUpon>201507202042112_newMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\AlbumDB.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IRepository.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Scripts\ManageViewModels.cs" />
     <Compile Include="Models\EFRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Album Service.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +274,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507201645264_newMigration.resx">
       <DependentUpon>201507201645264_newMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507202042112_newMigration1.resx">
+      <DependentUpon>201507202042112_newMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
