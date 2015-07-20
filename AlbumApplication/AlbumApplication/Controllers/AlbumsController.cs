@@ -80,7 +80,7 @@ namespace AlbumApplication.Controllers
                 original.Artist = album.Artist;
                 original.Genre = album.Genre;
                 _db.SaveChanges();
-                return View("Index");
+                return RedirectToAction("Index");
 
             }
 
