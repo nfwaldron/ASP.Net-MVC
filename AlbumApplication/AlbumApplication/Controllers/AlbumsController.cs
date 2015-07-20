@@ -1,4 +1,5 @@
 ﻿using AlbumApplication.Models;
+using CoderCamps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,11 @@ namespace AlbumApplication.Controllers
 {
     public class AlbumsController : Controller
     {
-        private IRepository _repo;
-
-        public AlbumsController(IRepository repo)
+        // formerly IRepository
+        private IGenericRepository _repo;
+        
+        // formerly IRepository
+        public AlbumsController(IGenericRepository repo)
         {
             _repo = repo;
         }
@@ -20,7 +23,11 @@ namespace AlbumApplication.Controllers
         public ActionResult Index()
         {
 
-            var albums = _repo.ListAlbums();
+            // For more complicated requests
+            var albums = (from a in _repo.Query<Album>() select a).ToList();
+
+           // var albums = _repo.Query<Album>.ToList();
+
             //var albums = _db.Albums.ToList();
             //var albums = (from a in _db.Albums select a).ToList();
             return View(albums);
@@ -44,7 +51,7 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.CreateAlbum(album);
+                _repo.Add(album);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +71,7 @@ namespace AlbumApplication.Controllers
             // id is now a nullable type. nullable types are class wrappers around the value.
             // in order to access the value of a nullable property, you must access it by
             // propertyName.Value
-            var original = _repo.FindAlbum(id.Value);
+            var original = _repo.Find<Album>(id.Value);
 
             if (original == null)
             {
@@ -80,7 +87,10 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.Edit(album);
+                var original = _repo.Find<Album>(album.Id);
+                original.Title = album.Title;
+                original.Artist = album.Artist;
+                original.Genre = album.Genre;
                 return RedirectToAction("Index");
 
             }
@@ -92,7 +102,7 @@ namespace AlbumApplication.Controllers
         // GET: Albums/Delete/5
         public ActionResult Delete(int id)
         {
-            var original = _repo.FindAlbum(id);
+            var original = _repo.Find<Album>(id);
             return View(original);
         }
 
@@ -101,7 +111,7 @@ namespace AlbumApplication.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            _repo.Delete(id);
+            _repo.Delete<Album>(id);
             return RedirectToAction("Index");
         }
     }
