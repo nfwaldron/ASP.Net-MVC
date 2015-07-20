@@ -7,7 +7,7 @@ namespace AlbumApplication.Models
 {
     public class EFRepository : AlbumApplication.Models.IRepository
     {
-        private AlbumDB _db = new AlbumDB();
+        private DataContext _db = new DataContext();
 
         //Method to get albums from database
         public IList<Album> ListAlbums()

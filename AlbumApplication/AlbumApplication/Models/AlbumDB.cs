@@ -6,9 +6,9 @@ using System.Web;
 
 namespace AlbumApplication.Models
 {
-    public class AlbumDB:DbContext
+    public class DataContext:DbContext
     {
-        public AlbumDB()
+        public DataContext()
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

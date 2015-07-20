@@ -6,14 +6,14 @@ namespace AlbumApplication.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AlbumApplication.Models.AlbumDB>
+    internal sealed class Configuration : DbMigrationsConfiguration<AlbumApplication.Models.DataContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(AlbumApplication.Models.AlbumDB context)
+        protected override void Seed(AlbumApplication.Models.DataContext context)
         {
             var albums = new Album[]
             {

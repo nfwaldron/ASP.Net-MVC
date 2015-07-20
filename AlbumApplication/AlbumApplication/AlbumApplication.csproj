@@ -178,6 +178,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\GenericRepository.cs" />
     <Compile Include="Migrations\201507201645264_newMigration.cs" />
     <Compile Include="Migrations\201507201645264_newMigration.Designer.cs">
       <DependentUpon>201507201645264_newMigration.cs</DependentUpon>
