@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AlbumApplication.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AlbumApplication.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ContactManager.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ContactManager.App_Start.NinjectWebCommon), "Stop")]
 
-namespace AlbumApplication.App_Start
+namespace ContactManager.App_Start
 {
     using System;
     using System.Web;
@@ -10,9 +10,8 @@ namespace AlbumApplication.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using AlbumApplication.Models;
     using CoderCamps;
-    using AlbumApplication.Services;
+    using ContactManager.Services;
 
     public static class NinjectWebCommon 
     {
@@ -64,12 +63,9 @@ namespace AlbumApplication.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // Create mapping between irepository and concrete class
-            // Bind Abstracts to Concretes
-
-            // kernel.Bind<IRepository>().To<EFRepository>();
             kernel.Bind<IGenericRepository>().To<GenericRepository>();
-            kernel.Bind<IAlbumService>().To<AlbumService>();
+
+            kernel.Bind<IContactServices>().To<ContactServices>();
         }        
     }
 }

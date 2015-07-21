@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{87B483AE-8D39-406F-A6AC-1B940968ED0A}</ProjectGuid>
+    <ProjectGuid>{F45793A3-D5C2-4406-9D0F-6931020EF32D}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AlbumApplication</RootNamespace>
-    <AssemblyName>AlbumApplication</AssemblyName>
+    <RootNamespace>ContactManager</RootNamespace>
+    <AssemblyName>ContactManager</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -172,33 +172,41 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\GenericRepository.cs" />
-    <Compile Include="Migrations\201507201645264_newMigration.cs" />
-    <Compile Include="Migrations\201507201645264_newMigration.Designer.cs">
-      <DependentUpon>201507201645264_newMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201507202237370_withContacts.cs" />
+    <Compile Include="Migrations\201507202237370_withContacts.Designer.cs">
+      <DependentUpon>201507202237370_withContacts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507202042112_newMigration1.cs" />
-    <Compile Include="Migrations\201507202042112_newMigration1.Designer.cs">
-      <DependentUpon>201507202042112_newMigration1.cs</DependentUpon>
+    <Compile Include="Migrations\201507202317453_spongebob.cs" />
+    <Compile Include="Migrations\201507202317453_spongebob.Designer.cs">
+      <DependentUpon>201507202317453_spongebob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507202319090_spongebob2.cs" />
+    <Compile Include="Migrations\201507202319090_spongebob2.Designer.cs">
+      <DependentUpon>201507202319090_spongebob2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507202321182_spongebob3.cs" />
+    <Compile Include="Migrations\201507202321182_spongebob3.Designer.cs">
+      <DependentUpon>201507202321182_spongebob3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Album.cs" />
-    <Compile Include="Models\AlbumDB.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\IRepository.cs" />
-    <Compile Include="Scripts\ManageViewModels.cs" />
-    <Compile Include="Models\EFRepository.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RandomContactGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Album Service.cs" />
-    <Compile Include="Services\IAlbumService.cs" />
+    <Compile Include="Services\ContactServices.cs" />
+    <Compile Include="Services\IContactServices.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Contacts\ContactVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -256,11 +264,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Albums\Index.cshtml" />
-    <Content Include="Views\Albums\Create.cshtml" />
-    <Content Include="Views\Albums\AlbumDoesNotExist.cshtml" />
-    <Content Include="Views\Albums\Edit.cshtml" />
-    <Content Include="Views\Albums\Delete.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,11 +278,17 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507201645264_newMigration.resx">
-      <DependentUpon>201507201645264_newMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507202237370_withContacts.resx">
+      <DependentUpon>201507202237370_withContacts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507202042112_newMigration1.resx">
-      <DependentUpon>201507202042112_newMigration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507202317453_spongebob.resx">
+      <DependentUpon>201507202317453_spongebob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507202319090_spongebob2.resx">
+      <DependentUpon>201507202319090_spongebob2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507202321182_spongebob3.resx">
+      <DependentUpon>201507202321182_spongebob3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -296,9 +307,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51926</DevelopmentServerPort>
+          <DevelopmentServerPort>51703</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51926/</IISUrl>
+          <IISUrl>http://localhost:51703/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

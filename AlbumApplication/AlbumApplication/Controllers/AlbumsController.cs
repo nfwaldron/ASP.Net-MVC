@@ -1,4 +1,5 @@
 ﻿using AlbumApplication.Models;
+using AlbumApplication.Services;
 using CoderCamps;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,12 @@ namespace AlbumApplication.Controllers
 {
     public class AlbumsController : Controller
     {
-        // formerly IRepository
-        private IGenericRepository _repo;
+        private IAlbumService _service;
         
         // formerly IRepository
-        public AlbumsController(IGenericRepository repo)
+        public AlbumsController(IAlbumService service)
         {
-            _repo = repo;
+            _service = service;
         }
           
         // GET: Albums
@@ -24,13 +24,13 @@ namespace AlbumApplication.Controllers
         {
 
             // For more complicated requests
-            var albums = (from a in _repo.Query<Album>() select a).ToList();
+            // var albums = (from a in _repo.Query<Album>() select a).ToList();
 
            // var albums = _repo.Query<Album>.ToList();
 
             //var albums = _db.Albums.ToList();
             //var albums = (from a in _db.Albums select a).ToList();
-            return View(albums);
+            return View(_service.List());
         }
 
         // GET: Albums/Details/5
@@ -51,8 +51,7 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.Add(album);
-                _repo.SaveChanges();
+                _service.Create(album);
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +71,7 @@ namespace AlbumApplication.Controllers
             // id is now a nullable type. nullable types are class wrappers around the value.
             // in order to access the value of a nullable property, you must access it by
             // propertyName.Value
-            var original = _repo.Find<Album>(id.Value);
+            var original = _service.Find(id.Value);
 
             if (original == null)
             {
@@ -88,11 +87,7 @@ namespace AlbumApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var original = _repo.Find<Album>(album.Id);
-                original.Title = album.Title;
-                original.Artist = album.Artist;
-                original.Genre = album.Genre;
-                _repo.SaveChanges();
+                _service.Edit(album);
                 return RedirectToAction("Index");
 
             }
@@ -104,7 +99,7 @@ namespace AlbumApplication.Controllers
         // GET: Albums/Delete/5
         public ActionResult Delete(int id)
         {
-            var original = _repo.Find<Album>(id);
+            var original = _service.Find(id);
             return View(original);
         }
 
@@ -113,8 +108,7 @@ namespace AlbumApplication.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteReally(int id)
         {
-            _repo.Delete<Album>(id);
-            _repo.SaveChanges();
+            _service.Delete(id);
             return RedirectToAction("Index");
         }
     }

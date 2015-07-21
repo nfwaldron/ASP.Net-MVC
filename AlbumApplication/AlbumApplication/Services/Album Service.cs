@@ -7,15 +7,16 @@ using System.Web;
 
 namespace AlbumApplication.Services
 {
-    public class Album_Service
+    public class AlbumService : AlbumApplication.Services.IAlbumService
     {
         private IGenericRepository _repo;
 
-        public Album_Service( IGenericRepository repo)
+        public AlbumService( IGenericRepository repo)
         {
             _repo = repo;
         }
 
+        // Querying the Database
         public IList<Album> List()
         {
             return _repo.Query<Album>().ToList();
@@ -28,7 +29,7 @@ namespace AlbumApplication.Services
         }
 
         // Create Album
-        public void Album Create(Album album)
+        public void Create(Album album)
         {
             _repo.Add<Album>(album);
             _repo.SaveChanges();
