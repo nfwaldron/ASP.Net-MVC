@@ -67,7 +67,7 @@ namespace AlbumApplication.App_Start
             // Create mapping between irepository and concrete class
             // Bind Abstracts to Concretes
 
-            // kernel.Bind<IRepository>().To<EFRepository>();
+          
             kernel.Bind<IGenericRepository>().To<GenericRepository>();
             kernel.Bind<IAlbumService>().To<AlbumService>();
         }        
