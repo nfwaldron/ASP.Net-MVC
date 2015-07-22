@@ -12,6 +12,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using TwoFactory_and_EmailConfirmation.Models;
 using Twilio;
+using SendGrid;
+using System.Net;
 
 namespace TwoFactory_and_EmailConfirmation
 {
@@ -19,8 +21,20 @@ namespace TwoFactory_and_EmailConfirmation
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            
+            myMessage.From = new System.Net.Mail.MailAddress("Stephen.Walther@CoderCamps.com", "Account Activation");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            // Enter your SendGrid username and the password 
+            var credentials = new NetworkCredential("CoderCamps", "Secret123!");
+
+            var transportWeb = new Web(credentials);
+            return transportWeb.DeliverAsync(myMessage);
+
         }
     }
 
