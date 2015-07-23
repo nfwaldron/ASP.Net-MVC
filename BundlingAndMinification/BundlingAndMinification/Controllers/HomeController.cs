@@ -10,9 +10,12 @@ namespace BundlingAndMinification.Controllers
     {
         public ActionResult Index()
         {
+            throw new Exception("Yikes!");
+            
             return View();
         }
 
+        [OutputCache(Duration=10)]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

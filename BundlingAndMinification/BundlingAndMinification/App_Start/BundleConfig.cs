@@ -14,9 +14,9 @@ namespace BundlingAndMinification
             // that any relative paths will be resolved correctly. By using the bundle name ~/Scripts/App 
             // the right relative path is preserved (the MyScripts part of the name is made up).
 
-            bundles.Add(new ScriptBundle("~/Scripts/App/MyScripts") // MyScripts is a made-up name...its acts as a placeholder.
-                .Include("~/Scripts/App/ScriptA.js")
-                .Include("~/Scripts/App/ScriptB.js")
+            bundles.Add(new ScriptBundle("~/Scripts/Apps/MyScripts") // MyScripts is a made-up name...its acts as a placeholder.
+                .Include("~/Scripts/Apps/ScriptA.js")
+                .Include("~/Scripts/Apps/ScriptB.js")
                 );
             
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
