@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageContacts", "ManageContacts\ManageContacts.csproj", "{BD988A89-D9F9-46C4-847F-9B696AD6236B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactGeneratorTest", "ContactGeneratorTest\ContactGeneratorTest.csproj", "{F82FC7FF-8994-4C70-9780-0C922966F6FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD988A89-D9F9-46C4-847F-9B696AD6236B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD988A89-D9F9-46C4-847F-9B696AD6236B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD988A89-D9F9-46C4-847F-9B696AD6236B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD988A89-D9F9-46C4-847F-9B696AD6236B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82FC7FF-8994-4C70-9780-0C922966F6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82FC7FF-8994-4C70-9780-0C922966F6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82FC7FF-8994-4C70-9780-0C922966F6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82FC7FF-8994-4C70-9780-0C922966F6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

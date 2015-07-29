@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DemoTelerik.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.Kendo().Grid(this.Model).Name("ListProducts").Pageable()
